@@ -16,6 +16,7 @@ public class Bonuses : MonoBehaviour
 
     [Space, Header("Heal")]
     public int healAmount = 3;
+    public ParticleSystem particleHeal;
 
     [Space, Header("Pierced")]
     public Image imagePercentPierced;
@@ -43,6 +44,7 @@ public class Bonuses : MonoBehaviour
         timerPierced = 0;
         skills.Reset();
         PiercedBonus();
+        particleHeal.Stop();
     }
 
     private void PiercedBonus()
@@ -118,6 +120,8 @@ public class Bonuses : MonoBehaviour
         if (Spend(3))
         {
             Player.Instance.hp.Heal(healAmount);
+            particleHeal.Stop();
+            particleHeal.Play();
         }
     }
 
