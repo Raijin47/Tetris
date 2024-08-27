@@ -14,6 +14,11 @@ public class Hp : MonoBehaviour
         Restore();
     }
 
+    public void SetMaxHp(int count)
+    {
+        maxHp = count;
+    }
+
     public void Restore()
     {
         hp = maxHp;

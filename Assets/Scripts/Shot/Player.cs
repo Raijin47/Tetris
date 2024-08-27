@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class Player : MonoBehaviour
 
     [Header("Visual")]
     public SpriteRenderer sr;
+    public VisualPercent hpVisual;
 
     [Space, Header("Direction")]
     public Vector2 dir = Vector2.left;
@@ -22,17 +22,24 @@ public class Player : MonoBehaviour
     public int damage = 1;
 
     public float timeRecharge = 4;
-    public float timeDelayBullet = 1;
+    public float speedAttack = 0.5f;
 
     [Space, Header("Other Setting")]
+    public Upgrades upgrades;
     public Hp hp;
     public LayerMask layerEnemy;
     public bool attack;
+    public GameObject rechargeBtn;
+
+    [Space, Header("Bonus")]
+    public float timeRechargeBonus = 0.5f;
+    public bool pierced = false;
 
     [Space, Header("Events")]
     public UnityEvent<int> OnChangeBullet;
-    public UnityEvent<float> OnRecharge; 
+    public UnityEvent<float> OnRecharge;
 
+    private Coroutine rechargeCoroutine;
 
 
     private void Awake()
@@ -47,10 +54,12 @@ public class Player : MonoBehaviour
 
     public void StartAttack()
     {
+        upgrades.Reset();
         Left();
         StopAllCoroutines();
         RestoreBullet();
         attack = true;
+        rechargeBtn.SetActive(false);
         StartCoroutine(AttackCoroutine());
     }
 
@@ -68,7 +77,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator AttackCoroutine()
     {
-        var delay = new WaitForSeconds(timeDelayBullet);
+        var minDelay = new WaitForSeconds(0.1f);
 
         while (attack)
         {
@@ -76,35 +85,52 @@ public class Player : MonoBehaviour
             {
                 Shot();
 
+                print("countBullet " + countBullet);
+
                 if (HaveBullet())
                 {
-                    yield return delay;
+                    yield return new WaitForSeconds(1 / speedAttack); ;
+                }
+                else
+                {
+                    rechargeBtn.SetActive(true);
                 }
             }
             else
             {
-                yield return RechargeCoroutine();
+                yield return minDelay;
+                //yield return RechargeCoroutine();
             }
         }
     }
 
     private void Shot()
     {
+        Audio.Play(ClipType.shot);
         print("shot");
         countBullet--;
         OnChangeBullet?.Invoke(countBullet);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanceAttack, layerEnemy);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanceAttack, layerEnemy);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, distanceAttack, layerEnemy);
 
-        if (hit.collider != null)
+        for (int i = 0; i < hits.Length; i++)
         {
-            print(hit.collider.gameObject);
+            RaycastHit2D hit = hits[i];
 
-            if (hit.collider.TryGetComponent(out Hp hpComponent))
+            if (i == 0 || (i == 1 && pierced))
             {
-                hpComponent.TakeDamage(damage);
+                if (hit.collider != null)
+                {
+                    print(hit.collider.gameObject);
 
-                Debug.Log($"Попал в объект: {hit.collider.gameObject.name}, нанесено урона: {damage}");
+                    if (hit.collider.TryGetComponent(out Hp hpComponent))
+                    {
+                        hpComponent.TakeDamage(damage);
+
+                        Debug.Log($"Попал в объект: {hit.collider.gameObject.name}, нанесено урона: {damage}");
+                    }
+                }
             }
         }
     }
@@ -120,15 +146,32 @@ public class Player : MonoBehaviour
         OnChangeBullet?.Invoke(countBullet);
     }
 
-    private IEnumerator RechargeCoroutine()
+    public void Recharge()
     {
+        rechargeBtn.SetActive(false);
+        rechargeCoroutine = StartCoroutine(RechargeCoroutine(timeRecharge));
+    }
+
+    public void RechargeBonus()
+    {
+        rechargeBtn.SetActive(false);
+
+        if (rechargeCoroutine != null)
+            StopCoroutine(rechargeCoroutine);
+
+        StartCoroutine(RechargeCoroutine(timeRechargeBonus));
+    }
+
+    private IEnumerator RechargeCoroutine(float time)
+    {
+        Audio.Play(ClipType.recharge);
         print("recharge");
-        float timer = timeRecharge;
+        float timer = time;
 
         while (timer > 0)
         {
-            timer = math.clamp(timer - Time.deltaTime, 0, timeRecharge);
-            float percent = 1 - (timer / timeDelayBullet);
+            timer = timer - Time.deltaTime;
+            float percent = math.clamp(1 - (timer / time), 0, 1);
             OnRecharge?.Invoke(percent);
             yield return null;
         }
@@ -149,5 +192,10 @@ public class Player : MonoBehaviour
     {
         attack = false;
         StopAllCoroutines();
+    }
+
+    internal void HpVisual()
+    {
+        hpVisual.SetCount(hp.maxHp);
     }
 }

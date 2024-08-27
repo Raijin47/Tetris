@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Skills : MonoBehaviour
 {
-    [SerializeField] private SkillData[] _skills;
-
+    public SkillData[] _skills;
 
     private void OnEnable()
     {
@@ -28,6 +27,19 @@ public class Skills : MonoBehaviour
 
         _skills[id].Percent += percent;
     }
+
+    public void AddDebug(int countPercent)
+    {
+        Add(5, countPercent);
+    }
+
+    public void Reset()
+    {
+        for (int i = 0; i < _skills.Length; i++)
+        {
+            _skills[i].Reset();
+        }
+    }
 }
 
 [Serializable]
@@ -38,17 +50,20 @@ public class SkillData
 
     private int _count;
     private int _percent;
+
     public int Percent
     {
         get => _percent;
         set
         {
             _percent = value;
-            if(_percent > 100)
+
+            if(_percent >= 100)
             {
                 Percent = _percent - 100;
                 Count++;
             }
+
             _textPercent.text = $"{_percent}%";
         }
     }
@@ -61,5 +76,11 @@ public class SkillData
             _count = value;
             _textCount.text = _count.ToString();
         }
+    }
+
+    public void Reset()
+    {
+        _percent = 0;
+        _count = 0;
     }
 }

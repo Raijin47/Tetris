@@ -50,8 +50,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4df1fa2c0890f4a8b6c338cb11a338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: {fileID: 3108823540847146387}
+  move: {fileID: 2380425232459477487}
+  collider: {fileID: 177110651096964065}
+  rb: {fileID: 6028622119456673980}
   timeAttack: 2
   damage: 1
+  healths: 010000000200000003000000
+  times:
+  - 0
+  - 60
+  - 180
+  delayDestroy: 1.5
 --- !u!114 &3108823540847146387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6028622119456673980}
-  speed: 1.3
-  target: {x: 0, y: 0, z: 0}
+  speed: 1.5
+  dir: {x: 0, y: 0, z: 0}
 --- !u!114 &441936142525023150
 MonoBehaviour:
   m_ObjectHideFlags: 0

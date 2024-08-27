@@ -30,6 +30,11 @@ public class VisualPercent : MonoBehaviour
         Set(percent);
     }
 
+    public void SetCount(int count)
+    {
+        maxCount = count;
+    }
+
     private void OnValidate()
     {
         if (visualImage && image == null)

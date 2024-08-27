@@ -56,6 +56,8 @@ namespace Tetris
                 GlobalEvent.AddBonus?.Invoke(obj.Tetromino.ID, obj.Tetromino.Bonus);
                 obj.Tetromino = null;
             }
+
+            Audio.Play(ClipType.tetrominoLine);
         }
     }
 }
