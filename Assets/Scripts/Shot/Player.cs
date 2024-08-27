@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [Header("Visual")]
     public SpriteRenderer sr;
     public VisualPercent hpVisual;
+    public ParticleSystem[] shootParticleSystems;
 
     [Space, Header("Direction")]
     public Vector2 dir = Vector2.left;
@@ -54,6 +55,11 @@ public class Player : MonoBehaviour
 
     public void StartAttack()
     {
+        foreach (var item in shootParticleSystems)
+        {
+            item.Stop();
+        }
+
         upgrades.Reset();
         Left();
         StopAllCoroutines();
@@ -110,6 +116,10 @@ public class Player : MonoBehaviour
         print("shot");
         countBullet--;
         OnChangeBullet?.Invoke(countBullet);
+        int id = dir.x == -1 ? 0: 1;
+
+        shootParticleSystems[id].Stop();
+        shootParticleSystems[id].Play();
 
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanceAttack, layerEnemy);
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, distanceAttack, layerEnemy);
