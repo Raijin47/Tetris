@@ -50,7 +50,12 @@ namespace Tetris
 
         private void CleanLine(int line)
         {
-
+            for (int x = 0; x < Size; x++)
+            {
+                var obj = Slot[line, x];
+                GlobalEvent.AddBonus?.Invoke(obj.Tetromino.ID, obj.Tetromino.Bonus);
+                obj.Tetromino = null;
+            }
         }
     }
 }

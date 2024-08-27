@@ -21,7 +21,7 @@ namespace Tetris
             {
                 _tetromino = value;
                 _image.color = _tetromino != null ? Color.white : Factory.Transparent;
-                _image.sprite = Tetromino.SpriteImage;
+                _image.sprite = _tetromino != null ?_tetromino.SpriteImage : null;
             } 
         }
         
