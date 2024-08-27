@@ -2690,12 +2690,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495940196}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 758926604}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &495940198
 MonoBehaviour:
@@ -2945,7 +2945,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 1.01}
+  m_Size: {x: 31.47541, y: 1.6557378}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3199,7 +3199,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 31.47541, y: 1.6557378}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 31.47541, y: 1.6557378}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3253,7 +3253,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 31.47541, y: 1.6557378}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3305,8 +3305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1121024964}
   speedAttack:
-    start: 0.5
-    add: 0.25
+    start: 0.4
+    add: 0.15
     mult: 0
     level: 0
     currentUpgrade: 0
@@ -3715,11 +3715,9 @@ Transform:
   - {fileID: 519420032}
   - {fileID: 1920779106}
   - {fileID: 516399430}
-  - {fileID: 495940197}
   - {fileID: 1647503858}
   - {fileID: 603433484}
   - {fileID: 214877077}
-  - {fileID: 1962756009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &758926605
@@ -5278,7 +5276,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 31.47541, y: 17.704918}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6551,10 +6549,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f8f0968d5869f0548a697ca54dc5f3ff, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
-  m_Pitch: 1
+  m_Pitch: 0.7
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -9366,7 +9364,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 0.56}
+  m_Size: {x: 31.47541, y: 0.91803277}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -9397,14 +9395,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962756008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1105783307}
   - {fileID: 1431104591}
-  m_Father: {fileID: 758926604}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962756010
 MonoBehaviour:
@@ -9422,14 +9420,15 @@ MonoBehaviour:
   - {fileID: 1105783308}
   - {fileID: 1431104592}
   clips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 865ee2fe5a9c0374aa2a87f49fc28c05, type: 3}
+  - {fileID: 8300000, guid: aefa11d94a1feeb4fa39c51a91af9448, type: 3}
+  - {fileID: 8300000, guid: eee09b5f329ff52488b766e4857c36c4, type: 3}
+  - {fileID: 8300000, guid: df5e1c8123049264eba634f44fb53887, type: 3}
+  - {fileID: 8300000, guid: e869c48082176fd45a83c8f2e5e0940e, type: 3}
+  - {fileID: 8300000, guid: 401d40967e79beb42b3fed47abcc2817, type: 3}
+  - {fileID: 8300000, guid: 43fb231c69884f24c8f0c96b28c384cc, type: 3}
+  - {fileID: 8300000, guid: fac6a0e224af9b4489bb4d2a8a61a624, type: 3}
+  - {fileID: 8300000, guid: 4d588292f7ee01d46b5f17f6b1d58b76, type: 3}
 --- !u!1 &2023024692
 GameObject:
   m_ObjectHideFlags: 0
@@ -11876,3 +11875,5 @@ SceneRoots:
   - {fileID: 1930664523}
   - {fileID: 1585627720}
   - {fileID: 1363413339}
+  - {fileID: 1962756009}
+  - {fileID: 495940197}

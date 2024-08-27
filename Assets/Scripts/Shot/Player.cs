@@ -164,7 +164,6 @@ public class Player : MonoBehaviour
 
     private IEnumerator RechargeCoroutine(float time)
     {
-        Audio.Play(ClipType.recharge);
         print("recharge");
         float timer = time;
 
@@ -176,6 +175,7 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+        Audio.Play(ClipType.recharge);
         RestoreBullet();
     }
 

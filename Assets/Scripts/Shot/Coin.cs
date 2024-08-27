@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Audio.Play(ClipType.coin);
             ShooterGame.Instance.coinEarned++;
             Money.Instance.Add(count);
             Destroy(gameObject);

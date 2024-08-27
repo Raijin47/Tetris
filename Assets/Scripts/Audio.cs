@@ -10,6 +10,8 @@ public enum ClipType
     upgrade,
     gameOver,
     tetrominoLine,
+    coin,
+
 }
 
 public class Audio : MonoBehaviour
