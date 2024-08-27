@@ -83,13 +83,13 @@ public class Player : MonoBehaviour
         {
             if (HaveBullet())
             {
-                Shot();
+                yield return new WaitForSeconds(1 / speedAttack);
 
-                print("countBullet " + countBullet);
+                Shot();
 
                 if (HaveBullet())
                 {
-                    yield return new WaitForSeconds(1 / speedAttack); ;
+                   
                 }
                 else
                 {

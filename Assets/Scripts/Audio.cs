@@ -11,13 +11,15 @@ public enum ClipType
     gameOver,
     tetrominoLine,
     coin,
-
+    damagePlayer,
+    granade
 }
 
 public class Audio : MonoBehaviour
 {
     public AudioSource[] audioSources;
     public AudioClip[] clips;
+    public float[] volums;
 
     public static Audio Instance;
 
@@ -26,20 +28,25 @@ public class Audio : MonoBehaviour
         Instance = this;
     }
 
+    public void PlayInterface()
+    {
+        Play(ClipType.click);
+    }
+
     public static void Play(ClipType type)
     {
         Play((int)type); 
     }
 
-    public static void Play(int clip)
+    public static void Play(int id)
     {
         if (Instance == null)
             return;
 
         AudioSource source = Instance.audioSources[0];
 
-        if (Instance.clips.Length > 0 && clip < Instance.clips.Length)
-            source.PlayOneShot(Instance.clips[clip]);
+        if (Instance.clips.Length > 0 && id < Instance.clips.Length)
+            source.PlayOneShot(Instance.clips[id], Instance.volums[id]);
     }
 
     public void ActiveAudio(bool activ)
@@ -64,5 +71,10 @@ public class Audio : MonoBehaviour
         audioSources[0].mute = !activ;
 
         Play(0);
+    }
+
+    private void OnValidate()
+    {
+
     }
 }

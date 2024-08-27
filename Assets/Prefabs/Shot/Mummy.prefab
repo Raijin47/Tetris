@@ -56,11 +56,13 @@ MonoBehaviour:
   rb: {fileID: 6028622119456673980}
   timeAttack: 2
   damage: 1
-  healths: 010000000200000003000000
+  healths: 0100000002000000030000000500000007000000
   times:
   - 0
   - 60
   - 180
+  - 360
+  - 500
   delayDestroy: 1.5
 --- !u!114 &3108823540847146387
 MonoBehaviour:

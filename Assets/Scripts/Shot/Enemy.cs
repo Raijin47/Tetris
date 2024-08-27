@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
         {
             print("enemy Attack");
             Player.Instance.hp.TakeDamage(damage);
+            Audio.Play(ClipType.damagePlayer);
         }
     }
 

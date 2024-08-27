@@ -8,6 +8,12 @@ public class Bonuses : MonoBehaviour
 
     public Skills skills;
 
+    [Space, Header("Granade")]
+    public Image imageUseGranade;
+    public bool useGranade;
+    public float radius = 3;
+    public GameObject particleGranade;
+
     [Space, Header("Heal")]
     public int healAmount = 3;
 
@@ -26,11 +32,14 @@ public class Bonuses : MonoBehaviour
         if (ShooterGame.isGame)
         {
             PiercedBonus();
+
+            GranadeBonus();
         }
     }
 
     internal void Reset()
     {
+        useGranade= false;
         timerPierced = 0;
         skills.Reset();
         PiercedBonus();
@@ -46,9 +55,46 @@ public class Bonuses : MonoBehaviour
         imagePercentPierced.fillAmount = math.clamp(timerPierced / timePierced, 0, 1);
     }
 
+    private void GranadeBonus()
+    {
+        if (useGranade)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                UseGranade();
+            }
+        }
+    }
+
+    private void UseGranade()
+    {
+        Audio.Play(ClipType.granade);
+
+        useGranade = false;
+        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Instantiate(particleGranade, pos, Quaternion.identity, transform);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, radius);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out Enemy enemy))
+            {
+                enemy.Death();
+            }
+        }
+
+        imageUseGranade.transform.parent.gameObject.SetActive(false);
+    }
+
     public void Granade()
     {
-
+        if (!useGranade && Spend(2))
+        {
+            useGranade = true;
+            imageUseGranade.transform.parent.gameObject.SetActive(true);
+        }
     }
 
     public void Pierced()
