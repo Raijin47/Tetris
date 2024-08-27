@@ -16,6 +16,9 @@ namespace Tetris
             InitializeField();
         }
 
+        private void OnEnable() => GlobalEvent.RestartGame += CleanField;
+        private void OnDisable() => GlobalEvent.RestartGame -= CleanField;
+
         private void InitializeField()
         {
             Slot = new Slot[Size, Size];
@@ -58,6 +61,17 @@ namespace Tetris
             }
 
             Audio.Play(ClipType.tetrominoLine);
+        }
+
+        private void CleanField()
+        {
+            for (int x = 0; x < Size; x++)
+            {
+                for (int y = 0; y < Size; y++)
+                {
+                    Slot[x, y].Tetromino = null;
+                }
+            }
         }
     }
 }

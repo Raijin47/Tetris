@@ -7,7 +7,7 @@ namespace Tetris
             { 0, 1, 0 },
             { 0, 1, 0 },
         };
-        
+
         public override int[,] Form { get => _form; }
     }
 }
