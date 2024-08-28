@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7112163470385426318}
   - component: {fileID: 177110651096964065}
   - component: {fileID: 6028622119456673980}
+  - component: {fileID: 3964236465523867852}
   m_Layer: 4
   m_Name: Mummy
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809258115430375415}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63,7 +64,9 @@ MonoBehaviour:
   - 180
   - 360
   - 500
-  delayDestroy: 1.5
+  animator: {fileID: 3964236465523867852}
+  deathDist: 1
+  delayDestroy: 2.5
 --- !u!114 &3108823540847146387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: b9759070561cc9941b13dd9ba7bfa3ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 418b4ab55cfd47849a269eb3684eccd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -208,11 +211,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.2793651}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50573057, y: 0.041446157}
-    oldSize: {x: 1.61, y: 2.79}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.85, y: 2.93}
     newSize: {x: 1.61, y: 2.79}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -248,3 +251,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3964236465523867852
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809258115430375415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25f08ee0e0acdce4ba09164ec58f80cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -127,7 +127,14 @@ public class Bonuses : MonoBehaviour
 
     public bool Knife()
     {
-        return Spend(4);
+        bool activate = Spend(4);
+
+        if (activate)
+        {
+            Audio.Play(ClipType.knife);
+        }
+
+        return activate;
     }
 
     public bool Spend(int idBonus)

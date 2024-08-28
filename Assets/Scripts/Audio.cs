@@ -12,7 +12,8 @@ public enum ClipType
     tetrominoLine,
     coin,
     damagePlayer,
-    granade
+    granade,
+    knife
 }
 
 public class Audio : MonoBehaviour

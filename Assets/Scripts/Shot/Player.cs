@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; internal set; }
 
     [Header("Visual")]
+    public Animator animator;
     public SpriteRenderer sr;
     public VisualPercent hpVisual;
     public ParticleSystem[] shootParticleSystems;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
 
     public int damage = 1;
 
+    public float delayAttack = 0.2f;
     public float timeRecharge = 4;
     public float speedAttack = 0.5f;
 
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
             item.Stop();
         }
 
+        animator.Play("Idle", 0, 0);
         upgrades.Reset();
         Left();
         StopAllCoroutines();
@@ -84,12 +87,17 @@ public class Player : MonoBehaviour
     private IEnumerator AttackCoroutine()
     {
         var minDelay = new WaitForSeconds(0.1f);
+        var delayShot = new WaitForSeconds(delayAttack);
 
         while (attack)
         {
             if (HaveBullet())
             {
                 yield return new WaitForSeconds(1 / speedAttack);
+
+                animator.SetTrigger("Shot");
+
+                yield return delayShot;
 
                 Shot();
 
@@ -174,6 +182,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator RechargeCoroutine(float time)
     {
+        animator.SetTrigger("Reload");
         print("recharge");
         float timer = time;
 

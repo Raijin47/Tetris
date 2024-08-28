@@ -11,7 +11,11 @@ public class Enemy : MonoBehaviour
     public float timeAttack = 2;
     public int damage = 1;
     public int[] healths = { 1, 2, 3 };
-    public float[] times = {0, 60, 180};
+    public float[] times = { 0, 60, 180 };
+
+    [Space, Header("Visual")]
+    public Animator animator;
+    public float deathDist = 1;
 
     [Space]
     public float delayDestroy = 1.5f;
@@ -29,7 +33,7 @@ public class Enemy : MonoBehaviour
         int id = 0;
         float time = ShooterGame.Instance.time;
 
-        for (int i = times.Length-1; i > 0; i--)
+        for (int i = times.Length - 1; i > 0; i--)
         {
             if (time >= times[i])
             {
@@ -43,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        animator.SetTrigger("Death");
         Spawner.Instance.SpawnCoin(transform.position);
         GlobalEvent.MummyDeath?.Invoke();
 
@@ -50,6 +55,8 @@ public class Enemy : MonoBehaviour
         move.enabled = false;
         collider.enabled = false;
         rb.simulated = false;
+
+        transform.position -= move.dir * deathDist;
 
         Destroy(gameObject, delayDestroy);
 
@@ -78,7 +85,9 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if(Bonuses.Instance.Knife())
+        animator.SetTrigger("Attack");
+
+        if (Bonuses.Instance.Knife())
         {
             print("Knife");
             Death();

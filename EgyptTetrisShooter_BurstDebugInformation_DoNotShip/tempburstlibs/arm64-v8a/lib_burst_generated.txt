@@ -10,7 +10,6 @@ Library: C:\git\unity\1Test\Tetris\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
---assembly-defines=spine-unity;
 --assembly-defines=System.Configuration;
 --assembly-defines=System.Core;
 --assembly-defines=System;
