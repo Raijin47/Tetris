@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: DRAGON HUNTER SDF Outline
+  m_Name: DRAGON Glow HUNTER SDF Outline 1
   m_EditorClassIdentifier: 
-  hashCode: 569297168
+  hashCode: 663586224
   material: {fileID: 4901347289831841502}
-  materialHashCode: -1987739984
+  materialHashCode: -1260913264
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1999825af2b49f747a81a2fb5f2fd0a5
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1999825af2b49f747a81a2fb5f2fd0a5, type: 3}
@@ -1368,7 +1368,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - GLOW_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -1416,10 +1417,10 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0.05
-    - _GlowOffset: 0
-    - _GlowOuter: 0.05
-    - _GlowPower: 0.75
+    - _GlowInner: 0.4
+    - _GlowOffset: 0.42
+    - _GlowOuter: 1
+    - _GlowPower: 0.5
     - _GradientScale: 10
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
@@ -1427,11 +1428,11 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.288
+    - _OutlineWidth: 0.2
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.73125
+    - _ScaleRatioB: 0.5149648
     - _ScaleRatioC: 0.73125
     - _ScaleX: 1
     - _ScaleY: 1
@@ -1457,9 +1458,9 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
+    - _GlowColor: {r: 0, g: 1, b: 0.91823196, a: 0.5882353}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0.3647059, g: 0.34117648, b: 0.2901961, a: 1}
+    - _OutlineColor: {r: 0, g: 0.43674663, b: 0.6320754, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
