@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -46,5 +47,10 @@ public class Money : MonoBehaviour
 
         if (save)
             PlayerPrefs.SetInt(nameof(money), money);
+    }
+
+    internal void Reset()
+    {
+        money = 0;
     }
 }

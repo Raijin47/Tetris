@@ -9,11 +9,13 @@ public class Skills : MonoBehaviour
     private void OnEnable()
     {
         GlobalEvent.AddBonus += Add;
+        GlobalEvent.RestartGame += Reset;
     }
 
     private void OnDisable()
     {
         GlobalEvent.AddBonus -= Add;
+        GlobalEvent.RestartGame -= Reset;
     }
 
     private void Add(int id, int percent)
@@ -80,7 +82,7 @@ public class SkillData
 
     public void Reset()
     {
-        _percent = 0;
-        _count = 0;
+        Percent = 0;
+        Count = 0;
     }
 }

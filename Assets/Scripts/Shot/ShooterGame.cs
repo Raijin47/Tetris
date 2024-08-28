@@ -93,6 +93,7 @@ public class ShooterGame : MonoBehaviour
 
     public void StartGame()
     {
+        Money.Instance.Reset();
         ui.SetPage(1);
         GameActivate(true);
         spawner.ClearSpawnedObjects();
