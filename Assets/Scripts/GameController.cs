@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1.0f;
         GlobalEvent.RestartGame?.Invoke();
     }
 }

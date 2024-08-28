@@ -6,7 +6,6 @@ namespace Tetris
     {
         public int ID;
         public int Bonus;
-        public int Rotate;
         public Sprite SpriteImage;
 
         public abstract int[,] Form { get; }

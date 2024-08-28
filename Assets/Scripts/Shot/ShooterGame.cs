@@ -121,7 +121,7 @@ public class ShooterGame : MonoBehaviour
     public void GameOver()
     {
         isGame = false;
-        print("Game Over");
+        Time.timeScale = 0;
         GlobalEvent.GameOver?.Invoke();
         spawner.Stop();
         player.Stop();
